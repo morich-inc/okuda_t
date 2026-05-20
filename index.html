@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奥田知広 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>奥田知広 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. Terra Drone株式会社（テラドローン）</a>
+  <a href="#k2">2. tripla株式会社（トリプラ）</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">オープンポジション</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">Terra Drone株式会社（テラドローン）</div>
+  <div class="co-url"><a href="https://www.terra-drone.net/company/" target="_blank">https://www.terra-drone.net/company/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区南平台町2番17号 A-PLACE渋谷南平台 4階</td></tr><tr><th>電話番号</th><td>03-6419-7193</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr><tr><th>平均年齢</th><td>32.6歳</td></tr><tr><th>連結従業員数</th><td>624名</td></tr><tr><th>展開国数</th><td>14カ国</td></tr><tr><th>海外売上比率</th><td>39%</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>2024年11月、東証グロース上場！「日本発グローバルメガベンチャー」の旗手に乗り込める</strong><br>2024年11月29日に東証グロース市場へ新規上場を果たし、次のフェーズへ突入中。ドローンサービス企業として世界Top3に選出され、サウジアラムコから出資を受けたアジア初の企業という圧倒的なブランド力を持つ会社で、上場直後の超成長期を一緒に走れる。</li><li><strong>&quot;空の道をつくる&quot;という壮大なミッションに本気で挑める</strong><br>UTM世界大手のユニフライ（ベルギー）を官民ファンドとの共同出資により子会社化し、実証レベルではなく国全体への実装レベルでUTMを開発・提供している。ドローンだけじゃなく、空飛ぶクルマまで見据えた「低空域経済圏」構築という、人類の未来を変えるフィールドで働ける。</li><li><strong>14カ国展開・平均年齢32歳──若くしてグローバル経営の真っ只中に立てる</strong><br>連結従業員数624名、平均年齢32.6歳でサービス展開国数は14カ国、海外売上比率39%というグローバル企業。Terra wayへの共感＝「志高く世界へ挑む」を本気で実現できる環境が整っている。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">テラモーターズ創業者・徳重徹氏が「ドローンで世界を変える」という強い信念のもと2016年に立ち上げた、日本発のグローバルドローンカンパニーです。測量・点検・農業・運航管理の分野で累計3,000件以上の実績を誇り、Drone Industry Insightsが発表する「ドローンサービス企業世界ランキング」では2019年以降連続でトップ2にランクイン。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>テラモーターズ創業者・徳重徹氏が「ドローンで世界を変える」という強い信念のもと2016年に立ち上げた、日本発のグローバルドローンカンパニーです。</p><p>測量・点検・農業・運航管理の分野で累計3,000件以上の実績を誇り、Drone Industry Insightsが発表する「ドローンサービス企業世界ランキング」では2019年以降連続でトップ2にランクイン。2024年はついに世界1位を獲得。さらに経済産業省主催「日本スタートアップ大賞2025」では「国土交通大臣賞」を受賞するなど、国内外での評価が急加速しています。</p><p>2024年11月29日に東証グロース市場への新規上場を果たし、資金調達で得た資金を武器にさらなるグローバル展開・M&Aを加速させている真っ最中です。</p><p>そして今、会社は大きな転換点を迎えています。防衛装備品市場への本格参入を決定し、米国法人「Terra Defense」の設立を推進。迎撃ドローン「Terra A1」は実運用環境下で長距離無人機への対処能力を確認し、ウクライナでの実戦投入まで進んでいます。産業用ドローンにとどまらず、安全保障領域まで事業を広げるダイナミズムは、まさに「志高く世界へ挑む」Terra wayを体現しています。</p><p>平均年齢32歳、14カ国展開という若くグローバルなフィールドで、&quot;空の道をつくる&quot;という壮大なミッションに本気で挑みたい方には、これ以上ない舞台です。</p><p><strong>徳重 徹（とくしげ とおる）氏 代表取締役社長</strong><br>1970年1月23日生まれ、山口県出身。九州大学工学部を卒業後、住友海上火災保険（現三井住友海上火災保険）に入社し、商品企画・経営企画を担当。2000年に米サンダーバード国際経営大学院でMBA（経営学修士）を取得後、米国でベンチャー企業の支援会社を立ち上げる。帰国後、2010年にEV事業を展開するテラモーターズを起業。アジアを中心に年間3万台のEVを販売する事業に育て上げる。その後2016年にドローン事業を展開するテラドローンを設立。2022年にはEV充電インフラ「テラチャージ」も立ち上げ、世界で勝てる事業の創出に挑んでいる。</p><p>Terra Drone株式会社（テラドローン）は、「Unlock &quot;X&quot; Dimensions（異なる次元を融合し、豊かな未来を創造する）」というミッションを掲げ、ドローンの開発及びソリューションを提供しています。また、安全かつ効率的なドローンや空飛ぶクルマの運航を実現するための運航管理システム（UTM）の開発・提供にも注力し、幅広い産業に貢献しています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 オープンポジション</div>
+          <div class="job-preview">世界No.1のドローンサービス企業にて、Dev/Biz/Ops等のオープンポジション</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>世界No.1のドローンサービス企業にて、Dev(ロボットエンジニア/アプリエンジニア/QAエンジニア/デザイナーなど）、Biz（セールス）、Ops（点検オペレーター）等のオープンポジションです。<br>※場合によって上記以外のポジションを打診させていただくこともございます</p><p><span class='tag tag-must'>MUST</span> テラドローンのミッションへの共感</p><p><strong>注意事項（応募について）：</strong><br>・再応募について<br>過去半年以内にご応募いただき、不合格となった方につきましては、同一職種への再応募はご遠慮いただいております。<br>※前回ご応募から半年以上経過されている方につきましては、ご応募可能です。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🚫 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.terra-drone.net/company/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">執行役員</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">tripla株式会社（トリプラ）</div>
+  <div class="co-url"><a href="https://tripla.io/" target="_blank">https://tripla.io/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区西新宿4-15-3 住友不動産西新宿ビル3号館3階</td></tr><tr><th>上場区分</th><td>東証グロース</td></tr><tr><th>展開国数</th><td>9カ国（日本、台湾、香港、韓国、アメリカ、シンガポール、インドネシア、タイ、フィリピン）</td></tr><tr><th>導入実績</th><td>国内約4,000施設・グローバル約9,000施設</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>宿泊業界DXの&quot;グローバルリーダー&quot;ポジションを確立済み</strong><br>国内約4,000施設・グローバル約9,000施設への導入実績を持つ、ホテル向けSaaSのトップランナー。東証グロース上場企業でありながら、韓国・台湾・シンガポール・香港・米国・タイ・インドネシア・フィリピンと8カ国以上に拠点を展開する本格グローバル企業。「日本のホテルDXを世界へ」という絵が、すでに現実になっている。</li><li><strong>M&Aは社長が全てドアノック──オーナーシップと熱量が違う経営陣</strong><br>仲介業者を一切使わず、CEOである高橋氏自らがクロスボーダーM&Aを3〜4社実行。財務DDからPMIまで経営陣が直接動く、スピードと本気度が桁違いのスタートアップマインドを持つ上場企業。代表との距離が近く、経営の意思決定を間近で体感できる環境。</li><li><strong>経営会議はオール英語──本物のグローバル環境がここにある</strong><br>社内の経営会議はすでに完全英語化。多国籍メンバーと日常的に渡り合う、なかなかお目にかかれないリアルなグローバル職場。「英語を使いたい」ではなく「英語でしか仕事にならない」環境に身を置きたい方には最高の舞台。</li><li><strong>IFRSへの移行・J-SOX対応など、&quot;今まさに進化中&quot;の会社</strong><br>日本基準からIFRS（国際会計基準）への移行、内部統制の本格フェーズ突入、連結決算の高度化など、会社の仕組みそのものをゼロから作り上げるフェーズ真っ只中。「整った環境で働く」より「自分で仕組みを作りたい」人が輝ける場所。</li><li><strong>フルフレックス×出社ベースで、ちゃんとチームで戦える文化</strong><br>フルフレックス制（実働8時間）で自律的な働き方が可能な一方、基本は出社スタイルでチームの一体感も大切にしている。リモート偏重でも管理偏重でもない、ちょうど良いバランス感覚を持つ会社。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">国内外の宿泊施設向けにDXを推進するITソリューション（ダイレクトブッキングに特化した宿泊予約サービス）を提供しています。2017年にAIチャットボット「tripla Bot」の提供を開始して以降、直販予約を支援する予約エンジン「tripla Book」、宿泊施設特化のCRM・マーケティング オートメーションサービス「tripla Connect」などを展開。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>国内外の宿泊施設向けにDXを推進するITソリューション（ダイレクトブッキングに特化した宿泊予約サービス）を提供しています。</p><p>2017年にAIチャットボット「tripla Bot」の提供を開始して以降、直販予約を支援する予約エンジン「tripla Book」、宿泊施設特化のCRM・マーケティング オートメーションサービス「tripla Connect」、広告運用代行サービス「tripla Boost」などを展開。2022年11月に東証グロース市場へ上場しています。</p><p>主力の「tripla Book」は導入3,645施設・GMV429億円まで成長し、triplaソリューション全体の導入施設は9,155施設に拡大しています。</p><p>アジアパシフィックを中心に9か国で事業を展開しています。（日本、台湾、香港、韓国、アメリカ、シンガポール、インドネシア、タイ、フィリピン）今後は決済ソリューションの拡充やAI×ビッグデータ活用を通じて、宿泊施設の収益最大化と業務自動化をさらに推進していく方針を掲げています。</p><p><strong>代表取締役 CEO　高橋和久氏</strong><br>北海道大学大学院工学研究科卒業。株式会社TKK入社後、Wake Forest UniversityにてMBAを取得。フィリップモリスジャパン合同会社、A.T.カーニー株式会社にてコンサル業・国内外の営業・マネジメント業務を経験。アマゾンジャパン合同会社のファッション事業部長、日本コカ･コーラ株式会社のEC事業部長を経て、2015年に株式会社umami（現・tripla株式会社）に取締役として入社。2016年に代表取締役CEOに就任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 執行役員 インターナショナルビジネス&PMI (Vice President Intl Business & PMI)</div>
+          <div class="job-preview">海外事業成長とM&A後のPMIを担う部署の責任者かつ執行役員として全社業績目標に責任</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>トリプラは国内外の宿泊施設に対してDXソリューションを提供するIT企業です。具体的には、宿泊施設の公式サイト経由の予約を最大化するサービスを提供しています。公式サイトの予約システムである「tripla Book」を中心に、予約前後での宿泊施設への質問に対してAIが回答する「tripla Bot」、宿泊施設に特化したCRMとMarketing Automationサービスである「tripla Connect」、tripla Bookの各種事前決済およびtripla LinkのVCC決済を実現する「tripla Pay」、東南アジア・東アジアを中心に展開するChannel Managerとして空室在庫の一元管理を支援する「tripla Link」を提供しています。また、台湾・インドネシア・中国・インドなどの海外ローカルOTAと接続し、宿泊施設のインバウンド予約獲得を支援する「tripla Nexus」の展開も開始しています。</p><p><strong>インターナショナルビジネス&PMI部 (International Business & PMI Department)</strong><br>トリプラは、BookandLink (インドネシア)、Surehigh (台湾)、Endurance・TPM (タイ)と複数のM&Aを通じてアジア太平洋地域における事業基盤を急速に拡大してきました。インターナショナルビジネス&PMI部は、こうした買収子会社のtriplaグループへの統合 (PMI) を推進するとともに、韓国・台湾・インドネシア・タイ・フィリピンをはじめとする海外市場における事業成長を牽引する部署です。現在は海外各拠点でローカルチームが展開しており、それらのチームと連携しながらグループ全体の海外戦略を統括します。また、tripla Linkおよびtripla Nexusを活用したインバウンド集客サービスの拡販も本部署の重要なミッションの一つです。主なKPIは、1. 海外子会社のPMI進捗・統合達成率、2. 海外拠点における契約施設数・営業収益の成長です。</p><p><strong>役割と責任 (Role and Responsibility)</strong><br>海外事業の成長とM&A後のPMIを担う部署の責任者であり、且つ会社全体の執行役員であるため、全社の業績目標に対して責任を持ちます。業績目標は営業収益と純利益の達成です。一方で主たるKPIは1. 海外拠点における契約施設数・営業収益の成長、2. M&A子会社のPMI統合達成率です。</p><p><strong>主な職責範囲 (Key Jobs)</strong></p><ul><li><strong>PMI戦略の立案と実行</strong><br>M&Aにより傘下に入った子会社（BookandLink、Surehigh、Endurance等）のtriplaグループへの統合計画を策定し、実行します。プロダクト・システム・組織・ビジネスプロセスの各側面における統合を推進し、各子会社が早期にtriplaのサービス品質・業績水準に到達できるよう、具体的なマイルストーンとアクションを設計・管理します。</li><li><strong>海外拠点のビジネス成長推進</strong><br>韓国・台湾・インドネシア・タイ・フィリピンをはじめとする海外各拠点において、年間目標（契約施設数・営業収益）達成のための成長戦略を立案します。その戦略は必ず、論理的、効果的、効率的、現実的であることが求められます。</li><li><strong>海外ローカルチームとの連携と支援</strong><br>海外各拠点のローカルチームと緊密に連携し、営業・オンボーディング・カスタマーサクセスにわたる現地業務を支援します。大型アカウントへの提案や重要パートナーとの交渉においては、VPが直接関与し成約をリードします。</li><li><strong>新規海外市場・パートナーシップの開拓</strong><br>tripla Nexus・tripla Linkを活用したインバウンド集客サービスの拡販を含め、新たな海外市場への参入戦略を立案・実行します。現地OTA・PMS・旅行会社等との戦略的パートナーシップの構築においても主導的な役割を担います。</li><li><strong>業績のタイムリーなモニタリングとリカバリーアクションの策定と実行</strong><br>各拠点の業績目標に対する進捗をタイムリーに把握し、進捗状況に応じた柔軟なアクションの見直しを行います。また、PMI統合の達成状況についても定期的にレビューを実施し、遅延や課題が発生した場合には迅速に対処します。</li><li><strong>経営チームへの業務報告</strong><br>定例で実施される経営会議にて、経営チームへの業務報告を実施します。自身の年間目標に対する進捗、抱えている課題とそれに対する具体的なアクションを正確に把握していただくことが求められます。</li><li><strong>活気・情熱あるチームビルディング</strong><br>海外拠点メンバーを含むチーム全体と積極的な意見交換・ノウハウの共有を行うことは非常に重要です。多様な文化・言語背景を持つメンバーが一体となって目標に向かえる、活気と情熱あるチームビルディングに貢献いただくことが求められます。</li></ul><p><strong>必要スキル・経験</strong></p><ul><li><span class='tag tag-must'>MUST</span> ビジネスレベルの英語力（スピーキング・ライティング共に必須）</li><li><span class='tag tag-must'>MUST</span> 企業法務・ガバナンス実務の基礎知識</li><li><span class='tag tag-must'>MUST</span> AIツール（生成AI・リーガルテック等）を実務に活用できるITリテラシー</li><li><span class='tag tag-must'>MUST</span> 管理部門での実務経験（5年以上）</li><li><span class='tag tag-must'>MUST</span> 国内または海外の4年制大学での学士</li></ul><p><strong>歓迎するスキル・経験</strong></p><ul><li><span class='tag tag-want'>WANT</span> 内部統制の整備・運用支援の経験（海外拠点向けであれば尚可）</li><li><span class='tag tag-want'>WANT</span> 海外子会社の設立、管理、または清算等に関わった実務経験</li><li><span class='tag tag-want'>WANT</span> IR・株主対応、または投資家向け英文ドキュメントの作成・管理の補助経験</li><li><span class='tag tag-want'>WANT</span> 法科大学院修了、またはパラリーガルとしての実務経験</li></ul><p><strong>求める人物像</strong><br>急成長するトリプラのグローバル展開を牽引する人物を求めています。具体的には以下のような方を求めています。</p><ul><li>結果・目標に対する強いコミットを持っている。</li><li>俯瞰的、包括的な視点に立って判断ができる。</li><li>顧客・パートナー視点に立った判断ができる。</li><li>定量的なデータ分析に基づいた判断ができる。</li><li>PDCAサイクルを自主的に回せる。</li><li>スピード感を持ち、論理的に考えた上で、海外市場における事業推進が行える。</li><li>多様な文化・言語背景を持つステークホルダーに対しても、分かりやすい説明ができる高いコミュニケーション力がある。</li><li>M&AおよびPMIの実務経験を持ち、複数の組織・チームを統合・推進できる。</li><li>成長意欲、学習意欲がある。</li><li>変化や挑戦に対して好意的である。</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://tripla.io/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが奥田知広 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
